@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.js">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div>
+        <h1 class="bg-dark text-warning text-center text-decoration-underline">Weather Application</h1>
+    </div>
+    <div id="items">
+        <input id="cityInput" type="text" placeholder="Search Location" class="p-1 w-45 mt-5 h-75 d-flex">
+
+        <button id="searchcity" class="btn-btn-danger" onclick="searchInfo()">Search</button>
+    </div>
+
+        <div id="weatherInfo" onclick="searchInfo()" style="height: 55vh;" class=" mt-10" ></div>  
+
+    <script>
+        var allWeathers=[];
+
+    function searchInfo() {
+        var apiKey = '48839b339c3e6e2cb9fd6389757c8cbd';
+        var cityInput = document.getElementById('cityInput');
+        var weatherInfo = document.getElementById('weatherInfo')
+
+        if (cityInput.value === '') { 
+            alert('Please enter a city.');
+            return;
+        }      
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${'48839b339c3e6e2cb9fd6389757c8cbd'}&units=metric`)
+                .then(response =>  response.json())
+                .then(data   => {
+                    const temperature = data.main.temp;
+                    const description = data.weather[0].description;
+
+                    
+                    weatherInfo.innerHTML = `<div>
+                    <h2>Name: ${cityInput.value}</h2>
+                    <h1 class='text-dark' >Temperature: ${temperature}°C</h1>
+                    
+                    <h4>Description: ${description}</h4>
+                    </div>`;
+                    })
+                    // document.getElementById("cityInput").innerHTML=content
+                // })   
+}
+
+    </script>
+</body>
+</html>

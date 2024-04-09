@@ -1,0 +1,33 @@
+body{
+    background-image: url("images/Weather\ Wallpaper.jpg");
+}
+
+#cityInput{
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    /* border: none; */
+    border-bottom: 2px solid white;
+    background-color: initial;
+    color: white;
+    outline: none;
+    margin-left: 15px;
+
+}
+
+#items{
+    display:flex ;
+}
+
+#searchcity{
+    border: 1px solid black;
+    border-radius: 5px solid blue;
+    margin-top: 52px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+#weatherInfo{
+    margin-top: 50px;   
+    text-align: center;
+}
